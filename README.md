@@ -10,7 +10,7 @@ PRACTICAL 4: INTEGRATING SNYK WITH GITHUB ACTIONS
 
 ### Security Features
 
-🔒 **Automated Security Scanning**: Every commit and PR is automatically scanned for vulnerabilities
+**Automated Security Scanning**: Every commit and PR is automatically scanned for vulnerabilities
 
 🛡️ **Dependency Monitoring**: Continuous monitoring of dependencies for new vulnerabilities  
 
