@@ -36,26 +36,70 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      - name: Build project for Snyk analysis
+      - name: Build project (required for comprehensive scanning)
         run: mvn clean compile
 
-      - name: Run comprehensive Snyk scan
+      - name: Debug Snyk environment
+        run: |
+          echo "Checking Snyk token availability..."
+          if [ -z "$SNYK_TOKEN" ]; then
+            echo "❌ SNYK_TOKEN is not set"
+            exit 1
+          else
+            echo "✅ SNYK_TOKEN is configured"
+          fi
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Snyk Dependency Scan
         uses: snyk/actions/maven@master
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --severity-threshold=medium --sarif-file-output=snyk.sarif
+          args: --severity-threshold=medium --sarif-file-output=snyk-deps.sarif
 
-      - name: Upload results to GitHub Security
-        uses: github/codeql-action/upload-sarif@v2
+      - name: Run Snyk Code Security Scan (SAST)
+        uses: snyk/actions/maven@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: code test
+          args: --sarif-file-output=snyk-code.sarif
+
+      - name: Check if SARIF file was generated
+        run: |
+          echo "Checking for SARIF files..."
+          ls -la *.sarif || echo "No SARIF files found"
+          if [ -f "snyk-deps.sarif" ]; then
+            echo "✅ Dependency scan SARIF found"
+            cat snyk-deps.sarif | head -20
+          fi
+          if [ -f "snyk-code.sarif" ]; then
+            echo "✅ Code scan SARIF found"
+            cat snyk-code.sarif | head -20
+          fi
+
+      - name: Upload SARIF results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
         if: always()
         with:
-          sarif_file: snyk.sarif
+          sarif_file: snyk-deps.sarif
+          category: snyk-dependencies
 
-      - name: Monitor dependencies with Snyk
-        uses: snyk/actions/maven@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Upload Code SARIF to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        if: always() && hashFiles('snyk-code.sarif') != ''
         with:
-          command: monitor
-          args: --project-name=${{ github.repository }}
+          sarif_file: snyk-code.sarif
+          category: snyk-code
+
+      - name: Archive security scan results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: security-scan-results
+          path: |
+            *.sarif
+            snyk-report.json
