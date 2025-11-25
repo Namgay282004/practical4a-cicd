@@ -2,9 +2,9 @@ name: Security Dashboard and Monitoring
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main", "master"]
   pull_request:
-    branches: ["master"]
+    branches: ["main", "master"]
   schedule:
     - cron: "0 6 * * *" # Daily security monitoring at 6 AM
 

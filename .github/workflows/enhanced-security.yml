@@ -106,40 +106,24 @@ jobs:
           echo "Maven dependencies:"
           mvn dependency:tree || echo "Failed to list dependencies"
 
-      - name: Install Snyk CLI
-        run: |
-          echo "📦 Installing Snyk CLI..."
-          npm install -g snyk
-          snyk --version
-          snyk auth ${{ secrets.SNYK_TOKEN }}
-
       - name: Run Snyk Dependency Scan
         if: matrix.scan-type == 'dependencies'
+        uses: snyk/actions/maven@master
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: |
-          echo "🔍 Running Snyk dependency scan..."
-          # Try the action first
-          if ! snyk test --maven --severity-threshold=medium --sarif-file-output=snyk-dependencies.sarif; then
-            echo "⚠️ Snyk test failed or found vulnerabilities, but continuing to generate SARIF"
-            # Ensure SARIF file is generated even if vulnerabilities are found
-            snyk test --maven --severity-threshold=medium --sarif-file-output=snyk-dependencies.sarif || true
-          fi
+        with:
+          args: --severity-threshold=medium --sarif-file-output=snyk-dependencies.sarif
 
       - name: Run Snyk Code Security Scan (SAST)
         if: matrix.scan-type == 'code'
+        uses: snyk/actions/maven@master
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: |
-          echo "🔍 Running Snyk code scan..."
-          # Try the code scan
-          if ! snyk code test --severity-threshold=high --sarif-file-output=snyk-code.sarif; then
-            echo "⚠️ Snyk code test failed or found vulnerabilities, but continuing to generate SARIF"
-            # Ensure SARIF file is generated even if vulnerabilities are found
-            snyk code test --severity-threshold=high --sarif-file-output=snyk-code.sarif || true
-          fi
+        with:
+          command: code test
+          args: --severity-threshold=high --sarif-file-output=snyk-code.sarif
 
       - name: Check if SARIF file was generated
         id: check-sarif
@@ -234,28 +218,13 @@ jobs:
       - name: Build project (required for monitoring)
         run: mvn clean compile -DskipTests
 
-      - name: Install Snyk CLI
-        run: |
-          echo "📦 Installing Snyk CLI for monitoring..."
-          npm install -g snyk
-          snyk --version
-          snyk auth ${{ secrets.SNYK_TOKEN }}
-
       - name: Monitor project with Snyk
+        uses: snyk/actions/maven@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          JAVA_HOME: ${{ env.JAVA_HOME }}
-        run: |
-          echo "📊 Monitoring project dependencies with Snyk..."
-          echo "JAVA_HOME: $JAVA_HOME"
-          echo "Java version: $(java -version)"
-
-          # Monitor the project for ongoing vulnerability tracking
-          snyk monitor --maven \
-            --project-name="${{ github.repository }}-production" \
-            --target-reference="${{ github.ref }}" \
-            --remote-repo-url="${{ github.server_url }}/${{ github.repository }}.git" \
-            || echo "⚠️ Monitoring completed with warnings (this is normal)"
+        with:
+          command: monitor
+          args: --project-name=${{ github.repository }}-production
 
   # Notification job for critical security issues
   notify:

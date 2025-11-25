@@ -2,11 +2,11 @@
 
 PRACTICAL 4: INTEGRATING SNYK WITH GITHUB ACTIONS
 
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=douglasswmcst_cicd-demo)](https://sonarcloud.io/summary/new_code?id=douglasswmcst_cicd-demo)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Namgay282004_practical4a-cicd)](https://sonarcloud.io/summary/new_code?id=Namgay282004_practical4a-cicd)
 
-[![Security Status](https://img.shields.io/badge/security-monitored-green)](https://github.com/douglasswmcst/cicd-demo/security)
+[![Security Status](https://img.shields.io/badge/security-monitored-green)](https://github.com/Namgay282004/practical4a-cicd/security)
 [![Snyk Vulnerabilities](https://img.shields.io/badge/snyk-monitored-blue)](https://snyk.io/)
-[![SAST](https://img.shields.io/badge/SAST-enabled-green)](https://github.com/douglasswmcst/cicd-demo/actions)
+[![SAST](https://img.shields.io/badge/SAST-enabled-green)](https://github.com/Namgay282004/practical4a-cicd/actions)
 
 ### Security Features
 
