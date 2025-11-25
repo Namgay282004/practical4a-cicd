@@ -46,7 +46,7 @@ jobs:
             echo "❌ SNYK_TOKEN is not set"
             exit 1
           else
-            echo "✅ SNYK_TOKEN is configured"
+            echo " SNYK_TOKEN is configured"
           fi
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -73,11 +73,11 @@ jobs:
           echo "Checking for SARIF files..."
           ls -la *.sarif || echo "No SARIF files found"
           if [ -f "snyk-deps.sarif" ]; then
-            echo "✅ Dependency scan SARIF found"
+            echo " Dependency scan SARIF found"
             cat snyk-deps.sarif | head -20
           fi
           if [ -f "snyk-code.sarif" ]; then
-            echo "✅ Code scan SARIF found"
+            echo " Code scan SARIF found"
             cat snyk-code.sarif | head -20
           fi
 

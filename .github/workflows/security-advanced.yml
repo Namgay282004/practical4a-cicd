@@ -54,7 +54,7 @@ jobs:
             echo "Visit: https://github.com/${{ github.repository }}/settings/secrets/actions"
             exit 1
           else
-            echo "✅ SNYK_TOKEN is configured"
+            echo " SNYK_TOKEN is configured"
           fi
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

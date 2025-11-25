@@ -40,7 +40,7 @@ jobs:
             echo ""
             echo "⚠️  Will attempt to run without authentication (limited functionality)"
           else
-            echo "✅ SNYK_TOKEN is configured"
+            echo " SNYK_TOKEN is configured"
             echo "🔄 Testing Snyk authentication..."
           fi
         env:

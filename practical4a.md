@@ -957,11 +957,11 @@ jobs:
 
 In this practical, you've learned how to:
 
-1. ✅ Set up SonarCloud account and integrate with GitHub
-2. ✅ Configure GitHub Actions for automated security scanning
-3. ✅ Understand and interpret SonarCloud security reports
-4. ✅ Implement quality gates for security enforcement
-5. ✅ Set up continuous monitoring for security
+1.  Set up SonarCloud account and integrate with GitHub
+2.  Configure GitHub Actions for automated security scanning
+3.  Understand and interpret SonarCloud security reports
+4.  Implement quality gates for security enforcement
+5.  Set up continuous monitoring for security
 
 ### Key Takeaways
 

@@ -1,6 +1,6 @@
 # Practical 4 Implementation Summary
 
-## ✅ Exercises Completed
+##  Exercises Completed
 
 ### Exercise 1: Basic Setup
 - [x] Fixed duplicate JaCoCo plugin configuration in `pom.xml`

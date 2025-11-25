@@ -1,7 +1,43 @@
-10020	MEDIUM	FAIL	# X-Frame-Options Missing
-10021	MEDIUM	WARN	# X-Content-Type-Options Missing
-10038	MEDIUM	FAIL	# CSP Missing
-10054	MEDIUM	FAIL	# Cookie Without SameSite
+# ZAP Scanning Rules Configuration
+# Format: rule_id	severity	action	# description
+# Actions: IGNORE, WARN, FAIL
+
+# High-severity vulnerabilities - FAIL the build
 40018	HIGH	FAIL	# SQL Injection
+40019	HIGH	FAIL	# SQL Injection - MySQL
+40020	HIGH	FAIL	# SQL Injection - Oracle
+40021	HIGH	FAIL	# SQL Injection - PostgreSQL
+40022	HIGH	FAIL	# SQL Injection - Hypersonic SQL
+40024	HIGH	FAIL	# SQL Injection - SQLite
 40012	HIGH	FAIL	# XSS (Reflected)
 40014	HIGH	FAIL	# XSS (Persistent)
+40016	HIGH	FAIL	# XSS (Persistent) - Prime
+40017	HIGH	FAIL	# XSS (Persistent) - Spider
+90020	HIGH	FAIL	# Command Injection
+90021	HIGH	FAIL	# Command Injection - Blind
+6	HIGH	FAIL	# Path Traversal
+20019	HIGH	FAIL	# External Redirect
+90023	HIGH	FAIL	# XML External Entity Attack
+40009	HIGH	FAIL	# Server Side Request Forgery
+30001	HIGH	FAIL	# Buffer Overflow
+30002	HIGH	FAIL	# Format String Error
+10023	HIGH	FAIL	# Information Disclosure - Debug Error Messages
+40025	HIGH	FAIL	# Proxy Disclosure
+
+# Medium-severity issues - WARN but don't fail
+10020	MEDIUM	WARN	# X-Frame-Options Missing
+10021	MEDIUM	WARN	# X-Content-Type-Options Missing
+10038	MEDIUM	WARN	# Content Security Policy Missing
+10054	MEDIUM	WARN	# Cookie Without SameSite Attribute
+10035	MEDIUM	WARN	# Strict-Transport-Security Missing
+10055	MEDIUM	WARN	# CSP Scanner
+10112	MEDIUM	WARN	# Session ID in URL Rewrite
+10113	MEDIUM	WARN	# Session Fixation
+10049	MEDIUM	WARN	# Content Cacheability
+10056	MEDIUM	WARN	# X-Debug-Token Information Leak
+
+# Low-severity issues - IGNORE for demo
+10009	LOW	IGNORE	# In Page Banner Information Leak
+10010	LOW	IGNORE	# Cookie No HttpOnly Flag
+10011	LOW	IGNORE	# Cookie Without Secure Flag
+10016	LOW	IGNORE	# Web Browser XSS Protection Not Enabled

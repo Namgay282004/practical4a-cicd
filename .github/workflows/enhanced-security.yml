@@ -131,7 +131,7 @@ jobs:
           SARIF_FILE="snyk-${{ matrix.scan-type }}.sarif"
           if [ -f "$SARIF_FILE" ]; then
             echo "sarif-exists=true" >> $GITHUB_OUTPUT
-            echo "✅ SARIF file found: $SARIF_FILE"
+            echo " SARIF file found: $SARIF_FILE"
           else
             echo "sarif-exists=false" >> $GITHUB_OUTPUT
             echo "❌ SARIF file not found: $SARIF_FILE"

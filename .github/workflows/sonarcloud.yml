@@ -1,0 +1,95 @@
+name: SonarCloud Security Analysis
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud:
+    name: SonarCloud SAST Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for better analysis
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Build and run tests with coverage
+        run: mvn clean verify
+
+      - name: Generate JaCoCo coverage report
+        run: mvn jacoco:report
+
+      - name: SonarCloud Scan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed for PR decoration
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn sonar:sonar \
+            -Dsonar.projectKey=Namgay282004_practical4a-cicd \
+            -Dsonar.organization=namgay282004 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.qualitygate.wait=true
+
+      - name: Check SonarCloud Quality Gate Status
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          echo "Checking Quality Gate status..."
+          # The sonar scanner already waits for quality gate, so this is just for logging
+          echo "Quality gate check completed in the previous step"
+
+  security-report:
+    name: Security Analysis Report
+    needs: sonarcloud
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Generate Security Summary
+        run: |
+          echo "## SonarCloud Security Analysis Summary" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| SonarCloud Scan | ${{ needs.sonarcloud.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Project Key | Namgay282004_practical4a-cicd |" >> $GITHUB_STEP_SUMMARY
+          echo "| Dashboard | [View Results](https://sonarcloud.io/project/overview?id=Namgay282004_practical4a-cicd) |" >> $GITHUB_STEP_SUMMARY
+          
+          if [[ "${{ needs.sonarcloud.result }}" == "success" ]]; then
+            echo "✅ **SonarCloud analysis completed successfully**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "🔍 **Next Steps:**" >> $GITHUB_STEP_SUMMARY
+            echo "1. Review security findings in the [SonarCloud Dashboard](https://sonarcloud.io/project/overview?id=Namgay282004_practical4a-cicd)" >> $GITHUB_STEP_SUMMARY
+            echo "2. Address any critical or high-priority security issues" >> $GITHUB_STEP_SUMMARY
+            echo "3. Review security hotspots and mark them as safe or fix them" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **SonarCloud analysis failed**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please check the workflow logs and SonarCloud dashboard for details." >> $GITHUB_STEP_SUMMARY
+          fi

@@ -10,7 +10,7 @@ The error you encountered shows:
 ### Root Cause
 The workflow is trying to run `snyk auth` interactively, which requires a web browser. GitHub Actions runs in a headless environment without a display, so interactive authentication fails.
 
-## ✅ Solution: Use Snyk GitHub Action with Token
+##  Solution: Use Snyk GitHub Action with Token
 
 ### Step 1: Create Snyk Account and Get API Token
 
@@ -48,20 +48,20 @@ Then go to your repository's Actions tab and run the "Snyk Authentication Test" 
 We've updated your workflows to use the Snyk GitHub Action properly:
 
 ### Enhanced Security Workflow (`.github/workflows/maven.yml`)
-- ✅ Uses `snyk/actions/maven@master` instead of CLI
-- ✅ Automatic token-based authentication
-- ✅ Proper error handling with `continue-on-error`
-- ✅ SARIF upload to GitHub Security tab
+-  Uses `snyk/actions/maven@master` instead of CLI
+-  Automatic token-based authentication
+-  Proper error handling with `continue-on-error`
+-  SARIF upload to GitHub Security tab
 
 ### Advanced Security Pipeline (`.github/workflows/security-advanced.yml`)
-- ✅ Matrix strategy for different scan types
-- ✅ Token verification before running scans
-- ✅ Graceful handling of authentication issues
+-  Matrix strategy for different scan types
+-  Token verification before running scans
+-  Graceful handling of authentication issues
 
 ### New Test Workflow (`.github/workflows/snyk-test.yml`)
-- ✅ Manual and automatic testing
-- ✅ Clear setup instructions
-- ✅ Simplified authentication testing
+-  Manual and automatic testing
+-  Clear setup instructions
+-  Simplified authentication testing
 
 ## 📋 Verification Checklist
 

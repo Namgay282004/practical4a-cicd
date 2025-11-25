@@ -179,10 +179,10 @@ The repository should already have a `dockerfile`. Verify it exists.
 ### Step 4.4: Preparing for DAST in CI/CD
 
 For DAST in GitHub Actions, we need:
-1. ✅ Application that can be built and run
-2. ✅ Docker container (for easy deployment in CI/CD)
-3. ✅ Known endpoints to test
-4. ✅ Network accessibility during scan
+1.  Application that can be built and run
+2.  Docker container (for easy deployment in CI/CD)
+3.  Known endpoints to test
+4.  Network accessibility during scan
 
 ## 5. Understanding OWASP ZAP {#understanding-zap}
 
@@ -1644,11 +1644,11 @@ jobs:
 
 In this practical, you've learned how to:
 
-1. ✅ Understand DAST and OWASP ZAP fundamentals
-2. ✅ Set up OWASP ZAP in GitHub Actions
-3. ✅ Configure different scan types (baseline, full, API)
-4. ✅ Interpret ZAP security findings
-5. ✅ Integrate DAST with CI/CD pipeline
+1.  Understand DAST and OWASP ZAP fundamentals
+2.  Set up OWASP ZAP in GitHub Actions
+3.  Configure different scan types (baseline, full, API)
+4.  Interpret ZAP security findings
+5.  Integrate DAST with CI/CD pipeline
 
 ### Key Takeaways
 

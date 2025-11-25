@@ -840,12 +840,12 @@ jobs:
 
 In this practical, you've learned how to:
 
-1. ✅ Set up Snyk account and integrate with GitHub
-2. ✅ Configure GitHub Actions for automated security scanning
-3. ✅ Understand and interpret vulnerability reports
-4. ✅ Implement advanced scanning strategies
-5. ✅ Handle vulnerability management and remediation
-6. ✅ Set up monitoring and alerting for security issues
+1.  Set up Snyk account and integrate with GitHub
+2.  Configure GitHub Actions for automated security scanning
+3.  Understand and interpret vulnerability reports
+4.  Implement advanced scanning strategies
+5.  Handle vulnerability management and remediation
+6.  Set up monitoring and alerting for security issues
 
 ### Key Takeaways
 

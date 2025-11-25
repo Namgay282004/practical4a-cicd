@@ -54,7 +54,7 @@ jobs:
           
           echo "## Security Status" >> security-dashboard.md
           if [ -f snyk-results.json ]; then
-            echo "✅ Snyk scan completed successfully" >> security-dashboard.md
+            echo " Snyk scan completed successfully" >> security-dashboard.md
             # Parse JSON results (simplified)
             echo "### Vulnerability Summary" >> security-dashboard.md
             echo "- Scan completed at: $(date)" >> security-dashboard.md
