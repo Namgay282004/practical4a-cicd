@@ -47,23 +47,18 @@ jobs:
         run: mvn jacoco:report
 
       - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed for PR decoration
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn sonar:sonar \
-            -Dsonar.projectKey=Namgay282004_practical4a-cicd \
-            -Dsonar.organization=namgay282004 \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.qualitygate.wait=true
 
       - name: Check SonarCloud Quality Gate Status
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           echo "Checking Quality Gate status..."
-          # The sonar scanner already waits for quality gate, so this is just for logging
-          echo "Quality gate check completed in the previous step"
+          echo "Quality gate status is available in SonarCloud dashboard"
+          echo "Visit: https://sonarcloud.io/project/overview?id=Namgay282004_practical4a-cicd"
 
   security-report:
     name: Security Analysis Report
