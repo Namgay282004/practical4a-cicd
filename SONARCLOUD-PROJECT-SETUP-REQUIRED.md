@@ -85,12 +85,12 @@ If manual creation is difficult:
 ## 📝 Verification Checklist
 
 Before running workflow:
-- [ ] SonarCloud account created
-- [ ] Organization imported (`namgay282004`) 
-- [ ] Project created (`Namgay282004_practical4a-cicd`)
-- [ ] Token generated and copied
-- [ ] GitHub Secret `SONAR_TOKEN` added
-- [ ] Project visible in SonarCloud dashboard
+-  SonarCloud account created
+-  Organization imported (`namgay282004`) 
+-  Project created (`Namgay282004_practical4a-cicd`)
+-  Token generated and copied
+-  GitHub Secret `SONAR_TOKEN` added
+-  Project visible in SonarCloud dashboard
 
 ## 🔗 Direct Links
 

@@ -1,23 +1,15 @@
 # Practical 4b Implementation Report: OWASP ZAP DAST Integration
 
-**Student Name**: [Your Name]  
-**Student ID**: [Your Student ID]  
-**Course**: SWE302 - Software Engineering  
-**Date**: November 25, 2025  
-**Assignment**: Practical 4b - Setting up DAST with OWASP ZAP
-
----
-
-## 📋 Executive Summary
+## Executive Summary
 
 Successfully implemented **Dynamic Application Security Testing (DAST)** using OWASP ZAP integration with GitHub Actions for automated runtime vulnerability scanning and security analysis.
 
 ### Key Achievements
-- ✅ OWASP ZAP DAST workflow configuration
-- ✅ Multiple scan types: Baseline, Full, and API scanning
-- ✅ Detection of 15+ runtime security vulnerabilities  
-- ✅ Automated DAST pipeline with GitHub Actions
-- ✅ Comprehensive security report generation
+-  OWASP ZAP DAST workflow configuration
+-  Multiple scan types: Baseline, Full, and API scanning
+-  Detection of 15+ runtime security vulnerabilities  
+-  Automated DAST pipeline with GitHub Actions
+-  Comprehensive security report generation
 
 ### Technology Stack
 - **DAST Tool**: OWASP ZAP
@@ -28,7 +20,7 @@ Successfully implemented **Dynamic Application Security Testing (DAST)** using O
 
 ---
 
-## 🔧 Implementation Details
+## Implementation Details
 
 ### 1. OWASP ZAP Configuration
 
@@ -121,7 +113,7 @@ public void redirect(@RequestParam String url, HttpServletResponse response) {
 
 ---
 
-## 🔍 DAST Analysis Results
+## DAST Analysis Results
 
 **![ZAP Baseline Scan Results](screenshots/07-zap-baseline-scan-results.png)**
 *ZAP Baseline scan results showing detected runtime vulnerabilities*
@@ -158,7 +150,7 @@ public void redirect(@RequestParam String url, HttpServletResponse response) {
 
 ---
 
-## 🚀 CI/CD Pipeline Implementation
+## CI/CD Pipeline Implementation
 
 **![GitHub Actions ZAP Workflow](screenshots/09-github-actions-zap-workflow.png)**
 *GitHub Actions showing successful ZAP DAST execution*
@@ -183,20 +175,20 @@ public void redirect(@RequestParam String url, HttpServletResponse response) {
 
 ---
 
-## 🔧 DAST vs SAST Comparison
+## DAST vs SAST Comparison
 
 ### What DAST (ZAP) Finds That SAST (SonarCloud) Misses
 
 | Security Issue | DAST Detection | SAST Detection |
 |---------------|----------------|----------------|
-| **Missing Security Headers** | ✅ Runtime detection | ❌ Code analysis limited |
-| **Server Configuration** | ✅ Actual server response | ❌ No runtime context |
-| **Cookie Security Settings** | ✅ HTTP response analysis | ❌ Config not in code |
-| **Open Redirect Behavior** | ✅ Follow redirects | ⚠️ Limited context |
-| **Clickjacking Protection** | ✅ Header validation | ❌ Frontend focus |
-| **SSL/TLS Configuration** | ✅ Network analysis | ❌ Infrastructure scope |
-| **Authentication Bypass** | ✅ Runtime testing | ⚠️ Logic analysis only |
-| **Session Management** | ✅ Cookie/session testing | ⚠️ Limited validation |
+| **Missing Security Headers** |  Runtime detection |  Code analysis limited |
+| **Server Configuration** |  Actual server response |  No runtime context |
+| **Cookie Security Settings** |  HTTP response analysis |  Config not in code |
+| **Open Redirect Behavior** |  Follow redirects |  Limited context |
+| **Clickjacking Protection** |  Header validation |  Frontend focus |
+| **SSL/TLS Configuration** |  Network analysis |  Infrastructure scope |
+| **Authentication Bypass** |  Runtime testing |  Logic analysis only |
+| **Session Management** |  Cookie/session testing |  Limited validation |
 
 ### Complementary Security Coverage
 ```
@@ -210,7 +202,7 @@ SAST (SonarCloud):          DAST (OWASP ZAP):
 
 ---
 
-## 🛠️ Advanced DAST Configuration
+## Advanced DAST Configuration
 
 ### ZAP Scan Customization
 ```yaml
@@ -245,7 +237,7 @@ strategy:
 
 ---
 
-## 📊 Security Findings Analysis
+## Security Findings Analysis
 
 ### Critical DAST Findings
 
@@ -273,32 +265,32 @@ strategy:
 ### DAST Remediation Priority
 
 **Phase 1: Critical Issues (Week 1)**
-- [ ] Fix Reflected XSS in search function
-- [ ] Implement directory traversal protection
-- [ ] Add input validation and output encoding
+-  Fix Reflected XSS in search function
+-  Implement directory traversal protection
+-  Add input validation and output encoding
 
 **Phase 2: Security Headers (Week 2)**  
-- [ ] Configure X-Frame-Options: DENY
-- [ ] Implement Content Security Policy
-- [ ] Add Strict-Transport-Security header
-- [ ] Enable X-Content-Type-Options: nosniff
+-  Configure X-Frame-Options: DENY
+-  Implement Content Security Policy
+-  Add Strict-Transport-Security header
+-  Enable X-Content-Type-Options: nosniff
 
 **Phase 3: Session & Cookie Security (Week 3)**
-- [ ] Add Secure flag to cookies
-- [ ] Implement HttpOnly cookie attribute  
-- [ ] Configure SameSite cookie protection
-- [ ] Strengthen session management
+-  Add Secure flag to cookies
+-  Implement HttpOnly cookie attribute  
+-  Configure SameSite cookie protection
+-  Strengthen session management
 
 ---
 
-## 🎯 Results and Benefits
+## Results and Benefits
 
 ### DAST Implementation Outcomes
-- **✅ Runtime Security Validation**: 15+ vulnerabilities detected in running application
-- **✅ Comprehensive Coverage**: Headers, cookies, session management, injection attacks
-- **✅ Automated Security Pipeline**: Zero manual intervention required
-- **✅ Multiple Scan Types**: Baseline (quick), Full (comprehensive), API (targeted)
-- **✅ Real-world Attack Simulation**: Actual HTTP requests and responses analyzed
+- **Runtime Security Validation**: 15+ vulnerabilities detected in running application
+- **Comprehensive Coverage**: Headers, cookies, session management, injection attacks
+- **Automated Security Pipeline**: Zero manual intervention required
+- **Multiple Scan Types**: Baseline (quick), Full (comprehensive), API (targeted)
+- **Real-world Attack Simulation**: Actual HTTP requests and responses analyzed
 
 ### Learning Outcomes
 - **DAST Tool Implementation**: Hands-on OWASP ZAP experience
@@ -314,17 +306,17 @@ strategy:
 
 ---
 
-## 📋 Conclusion
+## Conclusion
 
 ### Project Success Summary
 
 The OWASP ZAP DAST integration has been **successfully implemented** with comprehensive runtime security testing:
 
-- **✅ DAST Pipeline**: Fully automated with multiple scan types
-- **✅ Vulnerability Detection**: 15+ runtime security issues identified
-- **✅ CI/CD Integration**: Seamless GitHub Actions automation
-- **✅ Security Reports**: Multiple format outputs with detailed findings
-- **✅ Production Ready**: Scalable configuration for enterprise use
+- **DAST Pipeline**: Fully automated with multiple scan types
+- **Vulnerability Detection**: 15+ runtime security issues identified
+- **CI/CD Integration**: Seamless GitHub Actions automation
+- **Security Reports**: Multiple format outputs with detailed findings
+- **Production Ready**: Scalable configuration for enterprise use
 
 ### Key Technical Achievements
 - **Multi-Scan Architecture**: Baseline, Full, and API scan capabilities
@@ -338,7 +330,7 @@ This DAST implementation provides critical runtime security validation that comp
 
 ---
 
-## 📎 Appendices
+## Appendices
 
 ### Screenshots Reference
 1. **ZAP Baseline Scan Results** - Quick passive vulnerability detection
@@ -367,6 +359,3 @@ docker run -v $(pwd)/.zap:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-bas
 
 ---
 
-**End of Report**
-
-*Generated November 25, 2025 - Practical 4b: OWASP ZAP DAST Integration*

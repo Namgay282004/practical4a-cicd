@@ -43,7 +43,7 @@ jobs:
         run: |
           echo "Checking Snyk token availability..."
           if [ -z "$SNYK_TOKEN" ]; then
-            echo "❌ SNYK_TOKEN is not set"
+            echo " SNYK_TOKEN is not set"
             exit 1
           else
             echo " SNYK_TOKEN is configured"

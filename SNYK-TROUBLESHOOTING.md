@@ -67,11 +67,11 @@ We've updated your workflows to use the Snyk GitHub Action properly:
 
 After setting up the SNYK_TOKEN:
 
-- [ ] Token added to repository secrets
-- [ ] Workflows updated with latest fixes
-- [ ] Test workflow runs successfully
-- [ ] SARIF files uploaded to GitHub Security tab
-- [ ] No authentication errors in logs
+-  Token added to repository secrets
+-  Workflows updated with latest fixes
+-  Test workflow runs successfully
+-  SARIF files uploaded to GitHub Security tab
+-  No authentication errors in logs
 
 ## 🚨 Common Issues and Solutions
 

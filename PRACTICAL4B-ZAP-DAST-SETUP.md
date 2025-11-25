@@ -243,13 +243,13 @@ Code Issues   Dependency Scan   Container   Runtime    Production
 
 ##  Verification Checklist
 
-- [ ] ZAP workflow runs successfully in GitHub Actions
-- [ ] Application starts and is accessible during scan
-- [ ] ZAP finds multiple security vulnerabilities
-- [ ] HTML report generated and downloadable
-- [ ] High-severity alerts documented
-- [ ] Screenshots captured for submission
-- [ ] Security recommendations documented
+-  ZAP workflow runs successfully in GitHub Actions
+-  Application starts and is accessible during scan
+-  ZAP finds multiple security vulnerabilities
+-  HTML report generated and downloadable
+-  High-severity alerts documented
+-  Screenshots captured for submission
+-  Security recommendations documented
 
 ## 📚 Learning Outcomes
 

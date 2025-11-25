@@ -11,7 +11,40 @@ import com.github.javafaker.Faker;
 public class DataController {
     @GetMapping("/")
     public String healthCheck() {
-        return "HEALTH CHECK OK!";
+        return "<html><body>" +
+               "<h1>CICD Demo Application</h1>" +
+               "<p>HEALTH CHECK OK!</p>" +
+               "<h2>Available Endpoints:</h2>" +
+               "<ul>" +
+               "<li><a href='/version'>Version Info</a></li>" +
+               "<li><a href='/nations'>Random Nations</a></li>" +
+               "<li><a href='/currencies'>Random Currencies</a></li>" +
+               "<li><a href='/search?query=test'>Search Function</a></li>" +
+               "<li><a href='/insecure-page'>Insecure Page</a></li>" +
+               "<li><a href='/set-cookie'>Set Cookie</a></li>" +
+               "<li><a href='/redirect?url=https://example.com'>Open Redirect</a></li>" +
+               "<li><a href='/error-disclosure?file=test.txt'>Error Disclosure</a></li>" +
+               "<li><a href='/frame-me'>Clickjacking Demo</a></li>" +
+               "<li><a href='/content-sniff'>Content Type Sniffing</a></li>" +
+               "<li><a href='/sensitive-data'>Sensitive Data</a></li>" +
+               "<li><a href='/server-info'>Server Information</a></li>" +
+               "<li><a href='/session'>Session Management</a></li>" +
+               "<li><a href='/comment?comment=Hello'>HTML Injection</a></li>" +
+               "<li><a href='/private-data'>Private Data</a></li>" +
+               "<li><a href='/download?filename=test.txt'>File Download</a></li>" +
+               "</ul>" +
+               "<h3>Forms:</h3>" +
+               "<form method='POST' action='/submit-form'>" +
+               "Username: <input name='username' value='testuser'>" +
+               "Action: <input name='action' value='login'>" +
+               "<input type='submit' value='Submit'>" +
+               "</form>" +
+               "<form method='POST' action='/upload'>" +
+               "File Name: <input name='fileName' value='test.txt'>" +
+               "Content: <textarea name='fileContent'>Sample content</textarea>" +
+               "<input type='submit' value='Upload'>" +
+               "</form>" +
+               "</body></html>";
     }
 
     @GetMapping("/version")

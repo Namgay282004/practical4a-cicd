@@ -35,18 +35,18 @@
 ## 📸 Screenshot Checklist (Capture As You Go)
 
 ### Setup Phase:
-- [ ] **01_sonarcloud_account.png** - SonarCloud dashboard after login
-- [ ] **02_sonarcloud_project.png** - Project imported/configured
-- [ ] **03_github_secrets.png** - SONAR_TOKEN added to GitHub
+-  **01_sonarcloud_account.png** - SonarCloud dashboard after login
+-  **02_sonarcloud_project.png** - Project imported/configured
+-  **03_github_secrets.png** - SONAR_TOKEN added to GitHub
 
 ### Workflow Phase:
-- [ ] **04_github_actions.png** - Build workflow running/completed
-- [ ] **05_sonarqube_job.png** - SonarQube job details and logs
+-  **04_github_actions.png** - Build workflow running/completed
+-  **05_sonarqube_job.png** - SonarQube job details and logs
 
 ### Results Phase:
-- [ ] **06_sonarcloud_overview.png** - Analysis results dashboard
-- [ ] **07_sonarcloud_issues.png** - Security issues detected
-- [ ] **08_sonarcloud_security.png** - Security hotspots/vulnerabilities
+-  **06_sonarcloud_overview.png** - Analysis results dashboard
+-  **07_sonarcloud_issues.png** - Security issues detected
+-  **08_sonarcloud_security.png** - Security hotspots/vulnerabilities
 
 ## 🎯 What SonarCloud Will Find
 

@@ -27,7 +27,7 @@ jobs:
         run: |
           echo "🔍 Checking Snyk token configuration..."
           if [ -z "$SNYK_TOKEN" ]; then
-            echo "❌ SNYK_TOKEN is not configured in repository secrets"
+            echo " SNYK_TOKEN is not configured in repository secrets"
             echo ""
             echo "To fix this:"
             echo "1. Go to https://app.snyk.io/account and create an account"
@@ -38,7 +38,7 @@ jobs:
             echo "6. Name: SNYK_TOKEN"
             echo "7. Value: [paste your API token]"
             echo ""
-            echo "⚠️  Will attempt to run without authentication (limited functionality)"
+            echo "  Will attempt to run without authentication (limited functionality)"
           else
             echo " SNYK_TOKEN is configured"
             echo "🔄 Testing Snyk authentication..."

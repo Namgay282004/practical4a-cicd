@@ -53,12 +53,12 @@ OWASP Zed Attack Proxy (ZAP) is the world's most popular free, open-source web a
 
 Before starting this practical, ensure you have:
 
-- [ ] A GitHub account with repository access
-- [ ] Basic understanding of web application security
-- [ ] Familiarity with Docker (basic concepts)
-- [ ] Understanding of CI/CD concepts
-- [ ] Access to the `cicd-demo` repository (from Practical 4)
-- [ ] Basic knowledge of HTTP requests and responses
+-  A GitHub account with repository access
+-  Basic understanding of web application security
+-  Familiarity with Docker (basic concepts)
+-  Understanding of CI/CD concepts
+-  Access to the `cicd-demo` repository (from Practical 4)
+-  Basic knowledge of HTTP requests and responses
 
 ### Getting Started: Repository Setup
 
@@ -1380,18 +1380,18 @@ jobs:
 ## Remediation Roadmap
 
 ### Phase 1: Critical (Week 1)
-- [ ] Fix SQL Injection in /api/user endpoint
-- [ ] Fix Reflected XSS in /search endpoint
+-  Fix SQL Injection in /api/user endpoint
+-  Fix Reflected XSS in /search endpoint
 
 ### Phase 2: High Priority (Week 2)
-- [ ] Add X-Frame-Options header
-- [ ] Implement Content Security Policy
-- [ ] Add Anti-CSRF tokens
+-  Add X-Frame-Options header
+-  Implement Content Security Policy
+-  Add Anti-CSRF tokens
 
 ### Phase 3: Medium Priority (Week 3-4)
-- [ ] Add SameSite cookie attribute
-- [ ] Remove server version disclosure
-- [ ] Implement secure session management
+-  Add SameSite cookie attribute
+-  Remove server version disclosure
+-  Implement secure session management
 ```
 
 **Expected Outcome**:
@@ -1708,11 +1708,11 @@ In this practical, you've learned how to:
 
 ### Submission Checklist:
 
-- [ ] OWASP ZAP scan configured and running
-- [ ] GitHub Actions workflow executing successfully
-- [ ] At least 2 security findings identified and documented
-- [ ] ZAP rules configuration created
-- [ ] Security analysis report completed
-- [ ] All screenshots and documentation submitted
+-  OWASP ZAP scan configured and running
+-  GitHub Actions workflow executing successfully
+-  At least 2 security findings identified and documented
+-  ZAP rules configuration created
+-  Security analysis report completed
+-  All screenshots and documentation submitted
 
 ---

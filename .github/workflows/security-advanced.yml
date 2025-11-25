@@ -49,7 +49,7 @@ jobs:
       - name: Verify Snyk Authentication
         run: |
           if [ -z "$SNYK_TOKEN" ]; then
-            echo "❌ Error: SNYK_TOKEN secret is not configured"
+            echo " Error: SNYK_TOKEN secret is not configured"
             echo "Please add SNYK_TOKEN to your repository secrets"
             echo "Visit: https://github.com/${{ github.repository }}/settings/secrets/actions"
             exit 1

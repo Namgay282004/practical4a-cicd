@@ -134,7 +134,7 @@ jobs:
             echo " SARIF file found: $SARIF_FILE"
           else
             echo "sarif-exists=false" >> $GITHUB_OUTPUT
-            echo "❌ SARIF file not found: $SARIF_FILE"
+            echo " SARIF file not found: $SARIF_FILE"
             echo "Available files:"
             ls -la *.sarif 2>/dev/null || echo "No SARIF files found"
           fi

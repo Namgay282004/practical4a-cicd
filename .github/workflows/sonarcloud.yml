@@ -84,7 +84,7 @@ jobs:
             echo "2. Address any critical or high-priority security issues" >> $GITHUB_STEP_SUMMARY
             echo "3. Review security hotspots and mark them as safe or fix them" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ **SonarCloud analysis failed**" >> $GITHUB_STEP_SUMMARY
+            echo " **SonarCloud analysis failed**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "Please check the workflow logs and SonarCloud dashboard for details." >> $GITHUB_STEP_SUMMARY
           fi
