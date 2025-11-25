@@ -47,12 +47,12 @@ jobs:
 
       - name: Start application container
         run: |
-          docker run -d --name cicd-demo-app -p 8080:8080 cicd-demo:latest
+          docker run -d --name cicd-demo-app -p 3000:3000 cicd-demo:latest
           
           # Wait for application to start
           echo "Waiting for application to start..."
           timeout=60
-          while ! curl -f http://localhost:8080/ > /dev/null 2>&1; do
+          while ! curl -f http://localhost:3000/ > /dev/null 2>&1; do
             sleep 2
             timeout=$((timeout - 2))
             if [ $timeout -le 0 ]; then
@@ -66,10 +66,10 @@ jobs:
       - name: Test application endpoints
         run: |
           echo "Testing application endpoints..."
-          curl -f http://localhost:8080/ || exit 1
-          curl -f http://localhost:8080/version || exit 1
-          curl -f http://localhost:8080/nations || exit 1
-          curl -f http://localhost:8080/currencies || exit 1
+          curl -f http://localhost:3000/ || exit 1
+          curl -f http://localhost:3000/version || exit 1
+          curl -f http://localhost:3000/nations || exit 1
+          curl -f http://localhost:3000/currencies || exit 1
           echo "All endpoints are accessible!"
 
       - name: Save application logs
@@ -98,11 +98,11 @@ jobs:
         run: |
           mvn clean package -DskipTests
           docker build -t cicd-demo:latest .
-          docker run -d --name cicd-demo-app -p 8080:8080 cicd-demo:latest
+          docker run -d --name cicd-demo-app -p 3000:3000 cicd-demo:latest
           
           # Wait for application to start
           timeout=60
-          while ! curl -f http://localhost:8080/ > /dev/null 2>&1; do
+          while ! curl -f http://localhost:3000/ > /dev/null 2>&1; do
             sleep 2
             timeout=$((timeout - 2))
             if [ $timeout -le 0 ]; then
@@ -115,7 +115,7 @@ jobs:
       - name: Run ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.10.0
         with:
-          target: 'http://localhost:8080'
+          target: 'http://localhost:3000'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
           
@@ -140,11 +140,11 @@ jobs:
         run: |
           mvn clean package -DskipTests
           docker build -t cicd-demo:latest .
-          docker run -d --name cicd-demo-app -p 8080:8080 cicd-demo:latest
+          docker run -d --name cicd-demo-app -p 3000:3000 cicd-demo:latest
           
           # Wait for application to start
           timeout=60
-          while ! curl -f http://localhost:8080/ > /dev/null 2>&1; do
+          while ! curl -f http://localhost:3000/ > /dev/null 2>&1; do
             sleep 2
             timeout=$((timeout - 2))
             if [ $timeout -le 0 ]; then
@@ -157,7 +157,7 @@ jobs:
       - name: Run ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.8.0
         with:
-          target: 'http://localhost:8080'
+          target: 'http://localhost:3000'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
           
@@ -182,11 +182,11 @@ jobs:
         run: |
           mvn clean package -DskipTests
           docker build -t cicd-demo:latest .
-          docker run -d --name cicd-demo-app -p 8080:8080 cicd-demo:latest
+          docker run -d --name cicd-demo-app -p 3000:3000 cicd-demo:latest
           
           # Wait for application to start
           timeout=60
-          while ! curl -f http://localhost:8080/ > /dev/null 2>&1; do
+          while ! curl -f http://localhost:3000/ > /dev/null 2>&1; do
             sleep 2
             timeout=$((timeout - 2))
             if [ $timeout -le 0 ]; then
@@ -208,7 +208,7 @@ jobs:
             },
             "servers": [
               {
-                "url": "http://localhost:8080"
+                "url": "http://localhost:3000"
               }
             ],
             "paths": {
@@ -269,7 +269,7 @@ jobs:
       - name: Run ZAP API Scan
         uses: zaproxy/action-api-scan@v0.6.0
         with:
-          target: 'http://localhost:8080'
+          target: 'http://localhost:3000'
           format: 'openapi'
           api_spec: '.zap/api-definition.json'
           cmd_options: '-a'

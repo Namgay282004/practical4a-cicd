@@ -94,7 +94,7 @@ mvn clean verify sonar:sonar \
 
 ## 🏁 Success Criteria
 
-✅ You're ready for submission when you have:
+ You're ready for submission when you have:
 - SonarCloud account with project imported
 - GitHub Actions workflow completing successfully  
 - Security vulnerabilities detected in SonarCloud

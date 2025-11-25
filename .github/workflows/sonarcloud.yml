@@ -77,7 +77,7 @@ jobs:
           echo "| Dashboard | [View Results](https://sonarcloud.io/project/overview?id=Namgay282004_practical4a-cicd) |" >> $GITHUB_STEP_SUMMARY
           
           if [[ "${{ needs.sonarcloud.result }}" == "success" ]]; then
-            echo "✅ **SonarCloud analysis completed successfully**" >> $GITHUB_STEP_SUMMARY
+            echo " **SonarCloud analysis completed successfully**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "🔍 **Next Steps:**" >> $GITHUB_STEP_SUMMARY
             echo "1. Review security findings in the [SonarCloud Dashboard](https://sonarcloud.io/project/overview?id=Namgay282004_practical4a-cicd)" >> $GITHUB_STEP_SUMMARY

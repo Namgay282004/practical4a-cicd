@@ -62,10 +62,10 @@ git push origin main
 ## 📊 Expected Success Indicators
 
 When setup is correct:
-- ✅ GitHub Actions workflow completes successfully
-- ✅ SonarCloud dashboard shows analysis results  
-- ✅ Project appears at: `https://sonarcloud.io/project/overview?id=Namgay282004_practical4a-cicd`
-- ✅ Security vulnerabilities detected from `VulnerableController.java`
+-  GitHub Actions workflow completes successfully
+-  SonarCloud dashboard shows analysis results  
+-  Project appears at: `https://sonarcloud.io/project/overview?id=Namgay282004_practical4a-cicd`
+-  Security vulnerabilities detected from `VulnerableController.java`
 
 ## 🎯 Why This Happens
 

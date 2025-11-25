@@ -241,7 +241,7 @@ Code Issues   Dependency Scan   Container   Runtime    Production
    - Check ZAP can reach application URL
    - Review scan configuration
 
-## ✅ Verification Checklist
+##  Verification Checklist
 
 - [ ] ZAP workflow runs successfully in GitHub Actions
 - [ ] Application starts and is accessible during scan
