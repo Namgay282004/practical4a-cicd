@@ -79,7 +79,7 @@ jobs:
           
       - name: Upload application logs
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: application-logs
           path: app-logs.txt
@@ -113,7 +113,7 @@ jobs:
           done
 
       - name: Run ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.10.0
+        uses: zaproxy/action-baseline@v0.12.0
         with:
           target: 'http://localhost:3000'
           rules_file_name: '.zap/rules.tsv'
@@ -121,10 +121,16 @@ jobs:
           
       - name: Upload ZAP Baseline Report
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: zap-baseline-report
           path: report_html.html
+
+      - name: Cleanup
+        if: always()
+        run: |
+          docker stop cicd-demo-app || true
+          docker rm cicd-demo-app || true
 
   zap-full-scan:
     name: ZAP Full Scan
@@ -155,7 +161,7 @@ jobs:
           done
 
       - name: Run ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.8.0
+        uses: zaproxy/action-full-scan@v0.10.0
         with:
           target: 'http://localhost:3000'
           rules_file_name: '.zap/rules.tsv'
@@ -163,10 +169,16 @@ jobs:
           
       - name: Upload ZAP Full Scan Report
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: zap-full-scan-report
           path: report_html.html
+
+      - name: Cleanup
+        if: always()
+        run: |
+          docker stop cicd-demo-app || true
+          docker rm cicd-demo-app || true
 
   zap-api-scan:
     name: ZAP API Scan
@@ -267,19 +279,23 @@ jobs:
           EOF
 
       - name: Run ZAP API Scan
-        uses: zaproxy/action-api-scan@v0.6.0
+        uses: zaproxy/action-api-scan@v0.7.0
         with:
           target: 'http://localhost:3000'
-          format: 'openapi'
-          api_spec: '.zap/api-definition.json'
           cmd_options: '-a'
           
       - name: Upload ZAP API Scan Report
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: zap-api-scan-report
           path: report_html.html
+
+      - name: Cleanup
+        if: always()
+        run: |
+          docker stop cicd-demo-app || true
+          docker rm cicd-demo-app || true
 
   security-summary:
     name: Security Scan Summary
