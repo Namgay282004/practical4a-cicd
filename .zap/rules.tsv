@@ -1,0 +1,7 @@
+10020	MEDIUM	FAIL	# X-Frame-Options Missing
+10021	MEDIUM	WARN	# X-Content-Type-Options Missing
+10038	MEDIUM	FAIL	# CSP Missing
+10054	MEDIUM	FAIL	# Cookie Without SameSite
+40018	HIGH	FAIL	# SQL Injection
+40012	HIGH	FAIL	# XSS (Reflected)
+40014	HIGH	FAIL	# XSS (Persistent)

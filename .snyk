@@ -1,0 +1,46 @@
+# Snyk configuration file for cicd-demo project
+# This file demonstrates real vulnerability management practices
+
+version: v1.0.0
+
+# Ignore specific vulnerabilities with expiration dates
+ignore:
+  # Example: CVE in test dependencies (already fixed in our secure version)
+  'SNYK-JAVA-COMFASTERXMLJACKSONCORE-2807556':
+    - '*':
+        reason: 'Updated to secure version 2.15.2 - vulnerability no longer present'
+        expires: '2024-12-31T23:59:59.999Z'
+
+  # Example: Low severity vulnerability in development tools
+  'SNYK-JAVA-ORGAPACHECOMMONS-1596461':
+    - 'src/test/**':
+        reason: 'Test-only dependency - not present in production build'
+        expires: '2024-06-30T23:59:59.999Z'
+
+# Language-specific settings for Java/Maven projects
+language-settings:
+  java:
+    # Maven specific configuration
+    includeDevDeps: false  # Don't scan test dependencies in production scans
+    
+# Security policies for different environments
+exclude:
+  # Exclude generated files and build artifacts
+  - 'target/**'
+  - '**/*.class'
+  - 'logs/**'
+  - '.mvn/**'
+
+# Snyk Code configuration for static analysis
+code:
+  # Rules for code quality scanning
+  exclude:
+    - 'src/test/**'           # Exclude test files from some checks
+    - '**/*.properties'       # Skip configuration files
+    - '**/generated/**'       # Skip generated code
+    
+# Package manager specific settings
+packageManager:
+  maven:
+    # Only scan production dependencies
+    args: '--exclude-dev-deps'
